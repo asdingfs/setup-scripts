@@ -1,0 +1,44 @@
+Host github
+  User git
+  HostName ssh.github.com
+  Port 443
+  IdentityFile ~/.ssh/keys/github_rsa
+
+Host gitlab
+  User git
+  HostName altssh.gitlab.com
+  Port 443
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/keys/gitlab_rsa
+
+Host bitbucket
+  User git
+  HostName bitbucket.org
+  IdentityFile ~/.ssh/keys/bitbucket_rsa
+
+Host git-codecommit.*.amazonaws.com
+  User APKAX7PTTIEGWFHR2O43
+  IdentityFile ~/.ssh/keys/smrtcc_rsa
+
+# ssh config sample: for AWS CodeCommit
+# Host git-codecommit.*.amazonaws.com
+#   User <after uploading your SSH public keys, copy the Key ID here>
+#   IdentityFile <use your private key here>
+
+# ssh config sample: custom ssh shortcut
+# Host hbk.*
+#   User anthony
+#   IdentityFile ~/.ssh/keys/amazon_rsa
+#   IdentitiesOnly true
+#   RemoteCommand sudo su - ubuntu
+#   RequestTTY yes
+
+# ssh config sample: custom hostname
+# Host *.hubble.sg
+#   User anthony
+#   IdentityFile ~/.ssh/keys/amazon_rsa
+#   IdentitiesOnly yes
+#   RemoteCommand sudo su - ubuntu
+#   RequestTTY yes
+#   StrictHostKeyChecking no
+#   UserKnownHostsFile /dev/null

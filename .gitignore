@@ -1,0 +1,37 @@
+# System generated files
+.DS_Store
+network-security.data
+
+# Emacs backup, autosaves, sessions
+*#*
+*~
+session.*
+auto-save-list/*
+elpa/*
+
+# recentf file, since it might not be relevant accross machines
+recentf
+
+# project specific ignored files
+projectile-*
+/tramp
+*.cache
+
+# environment-specific file
+.personal.d/locals/*
+/eshell/*
+
+# maintained in Dropbox separately
+.personal.d/org/*
+
+# ignore other files
+.mc-lists.el
+transient*
+.zsh_history
+.zcompdump*
+
+.files.d/karabiner_config/automatic_backups/*
+.files.d/zsh/.zsh_sessions/*
+request/*
+server/*
+var/*
