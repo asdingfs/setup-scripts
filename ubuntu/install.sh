@@ -41,6 +41,8 @@ sudo dpkg -i tabby-1.0.200-linux-x64.deb
 git clone https://github.com/asdingfs/macosx-emacs-init.git .emacs.d/
 # link org notes synced to dropbox
 ln -s ${DROPBOX}/Org ${HOME}/.emacs.d/.personal.d/org
+# link org-roam synced to dropbox
+ln -s ${HOME}/.emacs.d/.personal.d/org/notes/brain/org-roam ${DROPBOX}/Brain/org-roam
 # populate submodules
 cd .emacs.d/
 git submodule update --init
