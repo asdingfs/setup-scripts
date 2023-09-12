@@ -11,12 +11,12 @@ cd ~/
 sudo apt-get update
 
 # install core dependency
-sudo apt-get install git curl build-essential gcc caja-dropbox font-manager xclip ibus-chewing virtualbox neofetch
+sudo apt-get install git curl plocate build-essential gcc caja-dropbox font-manager xclip ibus-chewing virtualbox neofetch wmctrl
 sudo snap install ruby --classic --channel=2.6/stable # for installing brew
 sudo snap install emacs --classic
 
 # install common applications
-sudo snap install 1password telegram-desktop logseq
+sudo snap install 1password telegram-desktop logseq postman
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"

@@ -176,5 +176,6 @@ fi
 
 [[ -s "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# use mac-like clipboard aliases (needs xclip to be installed)
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard'
