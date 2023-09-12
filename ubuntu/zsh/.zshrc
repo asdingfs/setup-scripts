@@ -40,7 +40,7 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras git-flow z zsh-completions zsh-syntax-highlighting)
+plugins=(git git-extras git-flow z zsh-completions zsh-syntax-highlighting ssh-agent)
 autoload -U compinit && compinit
 
 # Path to your oh-my-zsh installation
@@ -179,3 +179,8 @@ fi
 # use mac-like clipboard aliases (needs xclip to be installed)
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard'
+
+# configure ssh-agents
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add {} +
+

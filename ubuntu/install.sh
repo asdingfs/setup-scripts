@@ -63,8 +63,9 @@ ssh-keygen -t rsa -C "gitlab:anthonysetiawan.ding@gmail.com" -b 4096
 ssh-keygen -t rsa -C "codecommit:anthonysetiawan@smrt.com.sg" -b 4096
 chmod -R 400 ~/.ssh/keys/*
 # add private keys to OpenSSL
-find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add {} +
-ln -s $HOME/.config/personal/ubuntu/ssh_config $HOME/.ssh/config
+ln -s $HOME/.config/personal/ubuntu/ssh/ssh-agent.service $HOME/.config/systemd/user/ssh-agent.service
+# find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add {} +
+ln -s $HOME/.config/personal/ubuntu/ssh/ssh_config $HOME/.ssh/config
 
 # soft-link system config files
 # all .zlogin, .zshenv, .zshrc are set to be load from $ZDOTDIR
