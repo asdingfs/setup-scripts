@@ -88,3 +88,7 @@ sudo apt-get install numix-gtk-theme numix-icon-theme-circle
 
 # you can run Windows VirtualBox VM
 # by following this link https://www.learnitguide.net/2023/04/can-i-run-windows-vm-on-ubuntu.html
+
+# disable some unused keyboard shortcuts in ubuntu
+gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+
