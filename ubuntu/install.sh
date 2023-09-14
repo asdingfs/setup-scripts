@@ -95,8 +95,11 @@ gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
 # install custom scripts:
 mkdir -p ~/.local/bin
 
-
 # install screenshot script for taking screenshots of an area in ubuntu-mate
 ln -s ${HOME}/.config/personal/ubuntu/scripts/screenshot ~/.local/bin
 chmod 755 ~/.local/bin/screenshot
+
+# install focus_ec script for creating emacsclient frame when non-existent, or raise frame
+ln -s ${HOME}/.config/personal/ubuntu/scripts/focus_ec ~/.local/bin
+chmod 755 ~/.local/bin/focus_ec
 

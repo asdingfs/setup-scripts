@@ -161,8 +161,8 @@ fi
 # set other useful aliases for emacs
 alias et="emacsclient -t"
 alias est="sudo emacsclient -t"
-alias ecc="emacsclient -c -a emacs"
-alias ec="emacsclient -a '' --eval '(progn (select-frame-set-input-focus (selected-frame)))'"
+alias ec="emacsclient -c -a emacs"
+alias ecf="emacsclient -a '' --eval '(progn (select-frame-set-input-focus (selected-frame)))'"
 export ALTERNATE_EDITOR=""
 export EDITOR=et
 export VISUAL=ec
