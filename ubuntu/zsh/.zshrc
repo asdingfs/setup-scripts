@@ -161,7 +161,8 @@ fi
 # set other useful aliases for emacs
 alias et="emacsclient -t"
 alias est="sudo emacsclient -t"
-alias ec="emacsclient -c -a emacs"
+alias ecc="emacsclient -c -a emacs"
+alias ec="emacsclient -a '' --eval '(progn (select-frame-set-input-focus (selected-frame)))'"
 export ALTERNATE_EDITOR=""
 export EDITOR=et
 export VISUAL=ec
@@ -183,4 +184,3 @@ alias pbpaste='xclip -selection clipboard'
 # configure ssh-agents
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add {} +
-

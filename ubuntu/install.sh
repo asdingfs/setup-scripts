@@ -11,7 +11,7 @@ cd ~/
 sudo apt-get update
 
 # install core dependency
-sudo apt-get install git curl plocate build-essential gcc caja-dropbox font-manager xclip ibus-chewing virtualbox neofetch wmctrl
+sudo apt-get install git curl plocate build-essential gcc caja-dropbox font-manager xclip ibus-chewing virtualbox neofetch wmctrl xdotool
 sudo snap install ruby --classic --channel=2.6/stable # for installing brew
 sudo snap install emacs --classic
 
@@ -91,4 +91,12 @@ sudo apt-get install numix-gtk-theme numix-icon-theme-circle
 
 # disable some unused keyboard shortcuts in ubuntu
 gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+
+# install custom scripts:
+mkdir -p ~/.local/bin
+
+
+# install screenshot script for taking screenshots of an area in ubuntu-mate
+ln -s ${HOME}/.config/personal/ubuntu/scripts/screenshot ~/.local/bin
+chmod 755 ~/.local/bin/screenshot
 
