@@ -41,7 +41,7 @@ else
     if [[ $# -eq 0 ]]; then
         echo "Raising existing frame..."
         # Toggle frame visibility, i.e. if not frontmost bring to front, otherwise hide frame
-        osascript "$HOME/.emacs.d/.files.d/emacs/Emacs Toggle.app"
+        osascript "$HOME/.config/personal/macosx/emacs/Emacs Toggle.app"
     else
          # Open the file in the existing frame
         emacsclient -qn $1 -e "(frame-visible-p (selected-frame))"

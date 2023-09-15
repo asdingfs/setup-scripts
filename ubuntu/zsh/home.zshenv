@@ -1,2 +1,2 @@
-ZDOTDIR=$HOME/.emacs.d/.files.d/zsh
+ZDOTDIR=$HOME/.config/personal/macosx/zsh
 . $ZDOTDIR/.zshenv

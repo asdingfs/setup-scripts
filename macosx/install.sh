@@ -90,7 +90,7 @@ find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add -K {} +
 
 # soft-link system config files
 # all .zlogin, .zshenv, .zshrc are set to be load from $ZDOTDIR
-# they can be found in $HOME/.emacs.d/.files.d/zsh directory
+# they can be found in $HOME/.config/personal/macosx/zsh directory
 # https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/ for more info
 cp $HOME/.config/personal/zsh/home.zshenv $HOME/.zshenv # sets ZDOTDIR in $HOME/.zshenv, according to: https://www.reddit.com/r/zsh/comments/3ubrdr/proper_way_to_set_zdotdir/
 . $HOME/.zshenv # load the env variable
