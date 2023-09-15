@@ -117,6 +117,9 @@ cd /Applications/Emacs.app/Contents/
 rm -rf _CodeSignature
 cd ~/
 
+# link org-roam to logseq
+ln -s $HOME/Dropbox/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/brain/
+
 # setup discord shell script as workaround in Hackintosh
 ln -s $HOME/.config/personal/macosx/discord/discord $ROOT/usr/local/bin
 chmod 755 $HOME/.config/personal/macosx/discord/discord
