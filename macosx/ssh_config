@@ -20,6 +20,10 @@ Host bitbucket
   HostName bitbucket.org
   IdentityFile ~/.ssh/keys/bitbucket_rsa
 
+Host git-codecommit.*.amazonaws.com
+  User APKAX7PTTIEG2BLNQ3OU
+  IdentityFile ~/.ssh/keys/smrtcc_rsa
+
 # ssh config sample: custom ssh shortcut
 # Host hbk.*
 #   User anthony
