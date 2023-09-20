@@ -169,6 +169,7 @@ gpg --keyserver hkp://pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D3
 rvm pkg install openssl
 rvm install ruby --latest --with-openssl-dir=$HOME/.rvm/usr
 
+
 # other customisations for MacOS
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>' # disable CMD+CTRL+D
 defaults write com.apple.notificationcenterui bannerTime -int 2 # shorten notification banner time to 2s

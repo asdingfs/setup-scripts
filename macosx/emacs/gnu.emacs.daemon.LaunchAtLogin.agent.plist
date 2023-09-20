@@ -13,9 +13,10 @@
   <true/>
   <key>ServiceDescription</key>
   <string>Run GNU Emacs Daemon using MacOSX Launchd</string>
+  <!--NOTE: pls change to /usr/local/var/log/emacs.log on MacOSX Catalina-->
   <key>StandardOutPath</key>
-  <string>/usr/local/var/log/emacs.log</string>
+  <string>/opt/homebrew/var/log/emacs.log</string>
   <key>StandardErrorPath</key>
-  <string>/usr/local/var/log/emacs.log</string>
+  <string>/opt/homebrew/var/log/emacs.log</string>
 </dict>
 </plist>
