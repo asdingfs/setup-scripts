@@ -37,7 +37,7 @@ APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz 
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake musicbrainz-picard musescore send-to-kindle calibre vlc swinsian elmedia-player affinity-photo affinity-designer)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
-WORK_CASK_PACKAGES=(microsoft-teams microsoft-outlook onedrive asana teamviewer visual-studio-code)
+WORK_CASK_PACKAGES=(microsoft-teams microsoft-outlook onedrive asana teamviewer visual-studio-code azure-data-studio rider)
 # TODO: additional cask packages: mactex
 PIP_PACKAGES=(awscli)
 
