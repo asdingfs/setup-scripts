@@ -3,11 +3,14 @@
 # install script for MacOSX Catalina
 
 # install xcode command line tools
-xcode-select --install
+sudo xcode-select --install
+# install Rosetta for M1-based mac
+sudo softwareupdate --install-rosetta
 
 # set environment variables
 export ROOT=/System/Volumes/Data
 export HOME=${ROOT}/Users/$(whoami)
+export POSTGRES_INSTALL=postgresql@15
 cd ~/
 
 # install homebrew
@@ -26,37 +29,33 @@ exec zsh
 # note in MacOSX CATALINA, you need to grant full disk access to the terminal app that you're running
 
 # packages to install in this script
-BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv postgresql@15 redis node kubernetes-cli kubectx svn)
+BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL redis node kubernetes-cli kubectx svn)
 # TODO: additional brew packages: texinfo
-CORE_CASK_PACKAGES=(1password emacs iterm2 karabiner-elements shiftit scroll-reverser font-latin-modern-math alfred)
+CORE_CASK_PACKAGES=(1password emacs iterm2 firefox karabiner-elements scroll-reverser font-latin-modern-math alfred)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs omnidisksweeper onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(fluid dropbox google-drive firefox franz telegram skype discord zoom flume spotify google-chrome pdf-expert reflector duet parsec jump jump-desktop-connect steam openemu transmission)
-DEV_APPS_CASK_PACKAGES=(dash postman docker android-file-transfer android-studio vysor)
-MEDIA_APPS_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake mediahuman-audio-converter mediahuman-youtube-downloader musicbrainz-picard musescore sequential send-to-kindle calibre vlc swinsian elmedia-player)
+APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump jump-desktop-connect steam openemu transmission)
+DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
+MEDIA_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake musicbrainz-picard musescore send-to-kindle calibre vlc swinsian elmedia-player affinity-photo affinity-designer)
+# TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
+WORK_CASK_PACKAGES=(microsoft-teams microsoft-outlook onedrive asana teamviewer visual-studio-code)
 # TODO: additional cask packages: mactex
 PIP_PACKAGES=(awscli)
 
 # apps to install manually:
 # 1. Use Fluid to build native app out of web pages:
-#     - Asana
 # 2. Download from AppStore:
-#     - Snap (shortcuts)
+#     - Drafts
 #     - Magnet (like ShiftIt)
-#     - Monity: https://monityapp.com/ (MacOSX Status Monitoring)
 #     - Battery Monitor: Health, Info (Battery Health & Display)
 #     - Clocker (timezone)
 #     - JIRA Cloud App
 #     - Relax Melodies Premium
-#     - Typesy/Typist
-#.    - Spark
+#     - Typesy/Typist - OPTIONAL
+#     - Snap (shortcuts) - DEPRECATED (Alfred)
+#     - Monity: https://monityapp.com/ (MacOSX Status Monitoring) - NLA
 # 3. Manually download & install from websites:
-#     - Affinity Photo
-#     - Affinity Designer
 #     - Capture One
-#     - Google Drive
-#     - Palette Master Element (BENQ Monitor hardware calibration)
 #     - TeamViewer
-#     - Discord
 # 4. Install later on brew/cask if needed:
 #     - visit: https://formulae.brew.sh/cask/ for full list of casks
 #     - brew install texinfo/brew cask install mactex
@@ -69,14 +68,19 @@ brew install --cask "${SYSTEM_CASK_PACKAGES[@]}"
 brew install --cask "${APPS_CASK_PACKAGES[@]}"
 brew install --cask "${DEV_APPS_CASK_PACKAGES[@]}"
 brew install --cask "${MEDIA_CASK_PACKAGES[@]}"
+brew install --cask "${WORK_CASK_PACKAGES[@]}"
 pip install "${PIP_PACKAGES[@]}"
 
-# install emacs file & system configuration files
-git clone https://github.com/asdingfs/macosx-emacs-init.git .emacs.d/
+# install system configuration & emacs files
+git clone https://github.com/asdingfs/setup-scripts.git .config/personal/
+git clone https://github.com/asdingfs/emacs-init.git .emacs.d/
 # populate submodules
+cd .config/personal/
+git submodule update --init
+cd ~/
 cd .emacs.d/
 git submodule update --init
-cd ../
+cd ~/
 
 # setting up ssh keys, recommended to store keys inside ~/.ssh/keys
 mkdir -p $HOME/.ssh/keys
@@ -91,36 +95,34 @@ ssh-keygen -t rsa -C "codecommit:anthonysetiawan@smrt.com.sg" -b 4096
 chmod -R 400 ~/.ssh/keys/
 
 # to add to keychain
-find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add -K {} +
+find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add --apple-use-keychain --apple-load-keychain {} +
 
 # soft-link system config files
 # all .zlogin, .zshenv, .zshrc are set to be load from $ZDOTDIR
 # they can be found in $HOME/.config/personal/macosx/zsh directory
 # https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/ for more info
-cp $HOME/.config/personal/zsh/home.zshenv $HOME/.zshenv # sets ZDOTDIR in $HOME/.zshenv, according to: https://www.reddit.com/r/zsh/comments/3ubrdr/proper_way_to_set_zdotdir/
+cp $HOME/.config/personal/macosx/zsh/home.zshenv $HOME/.zshenv # sets ZDOTDIR in $HOME/.zshenv, according to: https://www.reddit.com/r/zsh/comments/3ubrdr/proper_way_to_set_zdotdir/
 . $HOME/.zshenv # load the env variable
 
 chmod -R 755 $ROOT/usr/local/share/zsh
 
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # setup emacs scripts
-ln -s $HOME/.config/personal/macosx/emacs/es $ROOT/usr/local/bin
-ln -s $HOME/.config/personal/macosx/emacs/ec $ROOT/usr/local/bin
-ln -s $HOME/.config/personal/macosx/emacs/em $ROOT/usr/local/bin
-chmod 755 $HOME/.config/personal/macosx/emacs/es $HOME/.config/personal/macosx/emacs/ec $HOME/.config/personal/macosx/emacs/em
+sudo ln -s $HOME/.config/personal/macosx/emacs/es $ROOT/usr/local/bin
+sudo ln -s $HOME/.config/personal/macosx/emacs/ec $ROOT/usr/local/bin
+sudo ln -s $HOME/.config/personal/macosx/emacs/em $ROOT/usr/local/bin
+sudo chmod 755 $HOME/.config/personal/macosx/emacs/es $HOME/.config/personal/macosx/emacs/ec $HOME/.config/personal/macosx/emacs/em
 
 # fix emacs compatibility with MacOSX Catalina, https://spin.atomicobject.com/2019/12/12/fixing-emacs-macos-catalina/
 # also on: https://medium.com/@holzman.simon/emacs-on-macos-catalina-10-15-in-2019-79ff713c1ccc
 # remember to grant Full Disk Access to Emacs
 # ALSO: remember to grant Full Disk Access to /usr/bin/ruby too (see: https://apple.stackexchange.com/questions/371888/restore-access-to-file-system-for-emacs-on-macos-catalina)
-cd $ROOT/Applications/Emacs.app/Contents/MacOS
-mv Emacs Emacs-launcher # for backup
-cp Emacs-x86_64-10_14 Emacs
-cd /Applications/Emacs.app/Contents/
-rm -rf _CodeSignature
-cd ~/
+# =====> SCRIPT START
+# cd $ROOT/Applications/Emacs.app/Contents/MacOS
+# mv Emacs Emacs-launcher # for backup
+# cp Emacs-x86_64-10_14 Emacs
+# cd /Applications/Emacs.app/Contents/
+# rm -rf _CodeSignature
+# cd ~/
 
 # link org-roam to logseq
 ln -s $HOME/Dropbox/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/brain/
@@ -145,18 +147,19 @@ git config --global user.name "Anthony Setiawan"
 git config --global user.email "anthonysetiawan.ding@gmail.com"
 
 # setup themes
+sudo ln -s /opt/homebrew/bin/zsh /usr/local/bin/ # sometimes you'll need to link them up (TODO: deprecate after syncing conf in all Macs)
 open $HOME/.config/personal/macosx/Tomorrow\ Night\ Eighties.itermcolors
 
 # install kubernetes
-echo "Setting up kubernetes..."
-aws configure
-curl https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/darwin/amd64/aws-iam-authenticator -o aws-iam-authenticator
-cp aws-iam-authenticator $ROOT/usr/local/bin
+# echo "Setting up kubernetes..."
+# aws configure
+# curl https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/darwin/amd64/aws-iam-authenticator -o aws-iam-authenticator
+# cp aws-iam-authenticator $ROOT/usr/local/bin
 # aws eks update-kubeconfig --name eks-dev-cluster
-aws eks update-kubeconfig --name eks-prod-cluster
+# aws eks update-kubeconfig --name eks-prod-cluster
 
 # run at startup
-brew services start postgresql
+brew services start $POSTGRES_INSTALL
 brew services start redis
 
 # install rvm & ruby
