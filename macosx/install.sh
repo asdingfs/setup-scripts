@@ -33,7 +33,7 @@ BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL
 # TODO: additional brew packages: texinfo
 CORE_CASK_PACKAGES=(1password emacs iterm2 firefox karabiner-elements scroll-reverser font-latin-modern-math alfred)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs omnidisksweeper onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump jump-desktop-connect steam openemu transmission)
+APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram whatsapp skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump jump-desktop-connect steam openemu transmission)
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake musicbrainz-picard musescore send-to-kindle calibre vlc swinsian elmedia-player affinity-photo affinity-designer)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
