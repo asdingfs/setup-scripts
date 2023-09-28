@@ -20,6 +20,7 @@ sudo snap install 1password telegram-desktop logseq postman
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+# NOTE: add the following line to bash/zsh .*rc file
 export BREW=$(brew --prefix)
 # tap 3rd party packages
 brew update
