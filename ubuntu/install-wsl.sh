@@ -8,18 +8,21 @@ export DROPBOX=${HOME}/Dropbox
 cd ~/
 
 # update system
-sudo apt-get update
+sudo apt update
 
 # install core dependency
-sudo apt-get install git curl plocate build-essential gcc caja-dropbox font-manager xclip ibus-chewing virtualbox neofetch wmctrl xdotool
+# BEFORE INSTALLING: add /mnt to PRUNEPATHS in /etc/updatedb.conf, otherwise plocate may take ETERNITY to complete
+sudo apt install git curl plocate build-essential gcc font-manager xclip nautilus
 sudo snap install ruby --classic --channel=2.6/stable # for installing brew
 sudo snap install emacs --classic
 
 # install common applications
-sudo snap install 1password telegram-desktop logseq postman
+sudo snap install 1password postman
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# if brew not found
 export BREW=$(brew --prefix)
 # tap 3rd party packages
 brew update
