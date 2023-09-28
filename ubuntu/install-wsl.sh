@@ -4,18 +4,24 @@
 # set environment variables
 export ROOT=/
 export HOME=${ROOT}home/$(whoami)
-export DROPBOX=${HOME}/Dropbox
+export DROPBOX=/mnt/d/Dropbox
 cd ~/
 
 # update system
 sudo apt update
+sudo apt full-upgrade
+
+# fix snapd issues
+# Getting snapd to work: https://github.com/microsoft/WSL/issues/5126
+sudo apt-get install -yqq daemonize dbus-user-session fontconfig  
+sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target  
+exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
 
 # install core dependency
 # BEFORE INSTALLING: add /mnt to PRUNEPATHS in /etc/updatedb.conf, otherwise plocate may take ETERNITY to complete
 sudo apt install git curl plocate build-essential gcc font-manager xclip nautilus
 sudo snap install ruby --classic --channel=2.6/stable # for installing brew
 sudo snap install emacs --classic
-
 # install common applications
 sudo snap install 1password postman
 
@@ -37,8 +43,10 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB8
 rvm pkg install openssl
 rvm install --latest --with-openssl-dir=`brew --prefix openssl` # SELECT version of Ruby here, as alternative to brew's OpenSSL, you may use RVM's one, $HOME/.rvm/usr
 # install tabby
-https://github.com/Eugeny/tabby/releases/download/v1.0.200/tabby-1.0.200-linux-x64.deb # SELECT version of Tabby here
-sudo dpkg -i tabby-1.0.200-linux-x64.deb
+curl -s https://packagecloud.io/install/repositories/eugeny/tabby/script.deb.sh | sudo bash
+sudo apt install tabby-terminal
+# https://github.com/Eugeny/tabby/releases/download/v1.0.200/tabby-1.0.200-linux-x64.deb # SELECT version of Tabby here
+# sudo dpkg -i tabby-1.0.200-linux-x64.deb
 
 # install emacs file & system configuration files
 git clone https://github.com/asdingfs/macosx-emacs-init.git .emacs.d/
@@ -46,6 +54,7 @@ git clone https://github.com/asdingfs/macosx-emacs-init.git .emacs.d/
 ln -s ${DROPBOX}/Org ${HOME}/.emacs.d/.personal.d/org
 # link org-roam synced to dropbox
 ln -s ${HOME}/.emacs.d/.personal.d/org/notes/brain/org-roam ${DROPBOX}/Brain/org-roam
+ln -s ${DROPBOX}/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/brain/
 # populate submodules
 cd .emacs.d/
 git submodule update --init
@@ -54,6 +63,13 @@ cd ../
 # following this guide: https://simpleit.rocks/linux/ubuntu/start-emacs-in-ubuntu-the-right-way/
 mkdir -p ${HOME}/.config/systemd/user
 cp /snap/emacs/current/usr/lib/systemd/user/emacs.service ~/.config/systemd/user/
+# copy fonts for emacs, copy from Dropbox to ~/.fonts
+mkdir -p ~/.fonts
+find ${DROPBOX}/Configurations/fonts -name \*.otf -exec cp {} ~/.fonts/ \;
+find ${DROPBOX}/Configurations/fonts -name \*.ttc -exec cp {} ~/.fonts/ \;
+fc-cache -f -v
+
+# start emacs service
 systemctl --user enable emacs.service
 systemctl --user start emacs.service
 
