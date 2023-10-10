@@ -1,0 +1,43 @@
+Host *
+  AddKeysToAgent yes
+
+Host github
+  User git
+  HostName ssh.github.com
+  Port 443
+  IdentityFile ~/.ssh/keys/github_ed25519
+
+Host gitlab
+  User git
+  HostName altssh.gitlab.com
+  Port 443
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/keys/gitlab_ed25519
+
+Host bitbucket
+  User git
+  HostName bitbucket.org
+  IdentityFile ~/.ssh/keys/bitbucket_ed25519
+
+Host smrt-codecommit
+  Hostname git-codecommit.ap-southeast-1.amazonaws.com
+  User APKAX7PTTIEGSEHNRF2P # Orion
+  IdentityFile ~/.ssh/keys/smrtcc_rsa
+
+# ssh config sample: custom ssh shortcut
+# Host hbk.*
+#   User anthony
+#   IdentityFile ~/.ssh/keys/amazon_rsa
+#   IdentitiesOnly true
+#   RemoteCommand sudo su - ubuntu
+#   RequestTTY yes
+
+# ssh config sample: custom hostname
+# Host *.hubble.sg
+#   User anthony
+#   IdentityFile ~/.ssh/keys/amazon_rsa
+#   IdentitiesOnly yes
+#   RemoteCommand sudo su - ubuntu
+#   RequestTTY yes
+#   StrictHostKeyChecking no
+#   UserKnownHostsFile /dev/null
