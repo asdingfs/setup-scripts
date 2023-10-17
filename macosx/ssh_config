@@ -23,8 +23,10 @@ Host bitbucket
 Host git-codecommit.*.amazonaws.com
   # Moon
   # User APKAX7PTTIEG2BLNQ3OU
-  # Mars
-  User APKAX7PTTIEGZYC2JHIB
+  # Orion
+  # User APKAX7PTTIEG7LUP2CDV
+  # Zephyr
+  User APKAX7PTTIEG2CCAO7OO
   IdentityFile ~/.ssh/keys/smrtcc_rsa
 
 # ssh config sample: custom ssh shortcut
