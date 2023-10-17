@@ -18,7 +18,6 @@ cd ~/
 
 # tap 3rd party packages
 brew update
-brew tap homebrew/cask-fonts
 
 # install brew zsh version
 brew install zsh
@@ -33,7 +32,7 @@ BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL
 # TODO: additional brew packages: texinfo
 CORE_CASK_PACKAGES=(1password emacs iterm2 firefox karabiner-elements scroll-reverser font-latin-modern-math alfred)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs omnidisksweeper onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram whatsapp skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump jump-desktop-connect steam openemu transmission)
+APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram whatsapp skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission raindropio rectangle)
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake musicbrainz-picard musescore send-to-kindle calibre vlc swinsian elmedia-player affinity-photo affinity-designer)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
@@ -45,17 +44,13 @@ PIP_PACKAGES=(awscli)
 # 1. Use Fluid to build native app out of web pages:
 # 2. Download from AppStore:
 #     - Drafts
-#     - Magnet (like ShiftIt)
-#     - Battery Monitor: Health, Info (Battery Health & Display)
+#     - Jump - BECAUSE I purchased it on the Mac App Store
+#     - Oxford Advanced Learner's Dictionary: https://apps.apple.com/jp/app/oxford-advanced-learners-dict/id1469549281?l=en
 #     - Clocker (timezone)
-#     - JIRA Cloud App
 #     - Relax Melodies Premium
 #     - Typesy/Typist - OPTIONAL
-#     - Snap (shortcuts) - DEPRECATED (Alfred)
-#     - Monity: https://monityapp.com/ (MacOSX Status Monitoring) - NLA
 # 3. Manually download & install from websites:
 #     - Capture One
-#     - TeamViewer
 # 4. Install later on brew/cask if needed:
 #     - visit: https://formulae.brew.sh/cask/ for full list of casks
 #     - brew install texinfo/brew cask install mactex
@@ -85,14 +80,16 @@ cd ~/
 # setting up ssh keys, recommended to store keys inside ~/.ssh/keys
 mkdir -p $HOME/.ssh/keys
 echo "Setting up ssh keys for GitHub access..."
-ssh-keygen -t rsa -C "github:anthonysetiawan.ding@gmail.com" -b 4096
+ssh-keygen -t ed25519 -f ~/.ssh/keys/github_eddsa -C "github:anthonysetiawan.ding@gmail.com" -b 4096
 echo "Setting up ssh keys for GitLab access..."
-ssh-keygen -t rsa -C "gitlab:anthonysetiawan.ding@gmail.com" -b 4096
+ssh-keygen -t ed25519 -f ~/.ssh/keys/gitlab_eddsa -C "gitlab:anthonysetiawan.ding@gmail.com" -b 4096
+echo "Setting up ssh keys for Bitbucket access..."
+ssh-keygen -t ed25519 -f ~/.ssh/keys/bitbucket_eddsa -C "bitbucket:anthonysetiawan.ding@gmail.com" -b 4096
 echo "Setting up ssh keys for SMRT's CodeCommit access..."
-ssh-keygen -t rsa -C "codecommit:anthonysetiawan@smrt.com.sg" -b 4096
+ssh-keygen -t rsa -f ~/.ssh/keys/smrtcc_rsa -C "codecommit:anthonysetiawan@smrt.com.sg" -b 4096
 
 # change permission of key file
-chmod -R 400 ~/.ssh/keys/
+chmod -R 400 ~/.ssh/keys/*
 
 # to add to keychain
 find ~/.ssh/keys/* \! -name "*.pub" -exec ssh-add --apple-use-keychain --apple-load-keychain {} +
@@ -125,11 +122,11 @@ sudo chmod 755 $HOME/.config/personal/macosx/emacs/es $HOME/.config/personal/mac
 # cd ~/
 
 # link org-roam to logseq
-ln -s $HOME/Dropbox/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/brain/
+ln -s $HOME/Dropbox/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/brain
 
 # setup discord shell script as workaround in Hackintosh
-ln -s $HOME/.config/personal/macosx/discord/discord $ROOT/usr/local/bin
 chmod 755 $HOME/.config/personal/macosx/discord/discord
+ln -s $HOME/.config/personal/macosx/discord/discord $ROOT/usr/local/bin
 
 # link launchd to start emacs at startupN
 chmod 755 $HOME/.config/personal/macosx/emacs/gnu.emacs.daemon.LaunchAtLogin.agent.plist
@@ -173,3 +170,5 @@ rvm install ruby --latest --with-openssl-dir=$HOME/.rvm/usr
 # other customisations for MacOS
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>' # disable CMD+CTRL+D
 defaults write com.apple.notificationcenterui bannerTime -int 2 # shorten notification banner time to 2s
+# to enable the third option to allow apps from anywhere to be installed
+sudo spctl --master-disable

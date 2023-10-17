@@ -35,3 +35,5 @@ transient*
 request/*
 server/*
 var/*
+
+.zsh_sessions
