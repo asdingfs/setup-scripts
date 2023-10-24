@@ -34,6 +34,7 @@ then
         emacsclient -a "" -cqnu -e "(magit-on-init-dir)"
     else
         # Create a frame and open the file within it
+        echo "Creating frame & opening file..."
         emacsclient -a "" -cqn $1
     fi
 else
@@ -43,7 +44,8 @@ else
         # Toggle frame visibility, i.e. if not frontmost bring to front, otherwise hide frame
         osascript "$HOME/.config/personal/macosx/emacs/Emacs Toggle.app"
     else
-         # Open the file in the existing frame
-        emacsclient -qn $1 -e "(frame-visible-p (selected-frame))"
+        # Open the file in the existing frame
+        echo "Opening file in existing frame..."
+        emacsclient -qn $1
     fi
 fi
