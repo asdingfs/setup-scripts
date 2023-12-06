@@ -23,6 +23,8 @@ Host bitbucket
 Host git-codecommit.*.amazonaws.com
   # Moon
   # User APKAX7PTTIEG2BLNQ3OU
+  # Ghost-Mac
+  # User APKAX7PTTIEGSVBPRZVM
   # Orion
   # User APKAX7PTTIEG7LUP2CDV
   # Zephyr
