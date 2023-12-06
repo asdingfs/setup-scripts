@@ -1,0 +1,7 @@
+/*
+ * custom style sheet to remove ugly text rendering in MacOS Sonoma
+ * source: https://apple.stackexchange.com/a/466706
+ */
+.LC20lb {
+  -webkit-text-stroke: unset !important;
+}
