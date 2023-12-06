@@ -28,7 +28,7 @@ exec zsh
 # note in MacOSX CATALINA, you need to grant full disk access to the terminal app that you're running
 
 # packages to install in this script
-BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL redis node kubernetes-cli kubectx svn)
+BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL redis node kubernetes-cli kubectx svn nvm)
 # TODO: additional brew packages: texinfo
 CORE_CASK_PACKAGES=(1password emacs iterm2 firefox karabiner-elements scroll-reverser font-latin-modern-math alfred)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs omnidisksweeper onyx appcleaner tunnelblick)
@@ -128,7 +128,8 @@ ln -s $HOME/Dropbox/Brain/logseq-brain/ $HOME/.emacs.d/.personal.d/org/notes/bra
 chmod 755 $HOME/.config/personal/macosx/discord/discord
 ln -s $HOME/.config/personal/macosx/discord/discord $ROOT/usr/local/bin
 
-# link launchd to start emacs at startupN
+
+# link launchd to start emacs at startup
 chmod 755 $HOME/.config/personal/macosx/emacs/gnu.emacs.daemon.LaunchAtLogin.agent.plist
 mkdir -p $HOME/Library/LaunchAgents
 ln -s $HOME/.config/personal/macosx/emacs/gnu.emacs.daemon.LaunchAtLogin.agent.plist $HOME/Library/LaunchAgents

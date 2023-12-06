@@ -1502,6 +1502,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -1523,6 +1525,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -1544,6 +1548,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -1567,6 +1573,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -1596,6 +1604,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
