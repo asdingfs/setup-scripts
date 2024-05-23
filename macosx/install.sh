@@ -30,25 +30,27 @@ exec zsh
 # packages to install in this script
 BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git pyenv $POSTGRES_INSTALL redis node kubernetes-cli kubectx svn nvm)
 # TODO: additional brew packages: texinfo
-CORE_CASK_PACKAGES=(1password emacs iterm2 firefox karabiner-elements scroll-reverser font-latin-modern-math alfred)
+BRAIN_CASK_PACKAGES=(1password emacs supernotes dropbox anki eagle mylio) # not cask: drafts
+CORE_CASK_PACKAGES=(iterm2 firefox arc karabiner-elements scroll-reverser font-latin-modern-math alfred keka)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs omnidisksweeper onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(fluid dropbox readdle-spark calendar-366 google-drive franz telegram whatsapp skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission raindropio rectangle)
+APPS_CASK_PACKAGES=(fluid readdle-spark calendar-366 google-drive franz telegram whatsapp skype discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission raindropio rectangle)
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma sketch gimp inkscape handbrake musicbrainz-picard musescore send-to-kindle calibre vlc swinsian elmedia-player affinity-photo affinity-designer)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
-WORK_CASK_PACKAGES=(microsoft-teams microsoft-outlook onedrive asana teamviewer visual-studio-code azure-data-studio rider)
+WORK_CASK_PACKAGES=(microsoft-teams microsoft-outlook onedrive teamviewer visual-studio-code)
 # TODO: additional cask packages: mactex
 PIP_PACKAGES=(awscli)
 
 # apps to install manually:
 # 1. Use Fluid to build native app out of web pages:
 # 2. Download from AppStore:
-#     - Drafts
+#     - Drafts - NOT in brew
 #     - Jump - BECAUSE I purchased it on the Mac App Store
 #     - Oxford Advanced Learner's Dictionary: https://apps.apple.com/jp/app/oxford-advanced-learners-dict/id1469549281?l=en
 #     - Clocker (timezone)
 #     - Relax Melodies Premium
 #     - Typesy/Typist - OPTIONAL
+#     - Calendar 366 II - licensing tied to version in App Store, installing from brew won't work
 # 3. Manually download & install from websites:
 #     - Capture One
 # 4. Install later on brew/cask if needed:
@@ -58,6 +60,7 @@ PIP_PACKAGES=(awscli)
 # install packages
 alias pip=pip3
 brew install "${BREW_PACKAGES[@]}"
+brew install --cask "${BRAIN_CASK_PACKAGES[@]}"
 brew install --cask "${CORE_CASK_PACKAGES[@]}"
 brew install --cask "${SYSTEM_CASK_PACKAGES[@]}"
 brew install --cask "${APPS_CASK_PACKAGES[@]}"
