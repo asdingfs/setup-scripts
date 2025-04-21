@@ -6,45 +6,67 @@ Host github
   User git
   HostName ssh.github.com
   Port 443
-  IdentityFile ~/.ssh/keys/github_rsa
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/keys/github_eddsa
+
+Host github-smrt
+  User git
+  HostName ssh.github.com
+  Port 443
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/keys/github_smrt_eddsa
 
 Host gitlab
   User git
   HostName altssh.gitlab.com
   Port 443
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/keys/gitlab_rsa
+  IdentityFile ~/.ssh/keys/gitlab_eddsa
 
 Host bitbucket
   User git
   HostName bitbucket.org
-  IdentityFile ~/.ssh/keys/bitbucket_rsa
+  IdentityFile ~/.ssh/keys/bitbucket_eddsa
 
-Host git-codecommit.*.amazonaws.com
-  # Moon
-  # User APKAX7PTTIEG2BLNQ3OU
-  # Ghost-Mac
-  # User APKAX7PTTIEGSVBPRZVM
-  # Orion
-  # User APKAX7PTTIEG7LUP2CDV
-  # Zephyr
+# List of SMRT CodeCommit's credentials
+# Moon
+# User APKAX7PTTIEG2BLNQ3OU
+# Ghost-Mac
+# User APKAX7PTTIEGSVBPRZVM
+# Orion
+# User APKAX7PTTIEG7LUP2CDV
+# Zephyr
+# User APKAX7PTTIEG2CCAO7OO
+Host smrt-codecommit
   User APKAX7PTTIEG2CCAO7OO
+  HostName git-codecommit.ap-southeast-1.amazonaws.com
   IdentityFile ~/.ssh/keys/smrtcc_rsa
 
-# ssh config sample: custom ssh shortcut
-# Host hbk.*
-#   User anthony
-#   IdentityFile ~/.ssh/keys/amazon_rsa
-#   IdentitiesOnly true
-#   RemoteCommand sudo su - ubuntu
-#   RequestTTY yes
+Host smrt-ws-bastion
+  User ec2-user
+  Hostname ec2-13-229-119-36.ap-southeast-1.compute.amazonaws.com
+  IdentityFile ~/.ssh/keys/vitalWinkBastionHostKey.pem
 
-# ssh config sample: custom hostname
-# Host *.hubble.sg
-#   User anthony
-#   IdentityFile ~/.ssh/keys/amazon_rsa
-#   IdentitiesOnly yes
-#   RemoteCommand sudo su - ubuntu
-#   RequestTTY yes
-#   StrictHostKeyChecking no
-#   UserKnownHostsFile /dev/null
+
+Host smrt-ws-prod-db
+  HostName vital-wink-ws-prod-db-instance-1.cakuok8ibwwx.ap-southeast-1.rds.amazonaws.com
+  Port 5432
+  ProxyJump smrt-ws-bastion
+
+  # ssh config sample: custom ssh shortcut
+  # Host hbk.*
+  #   User anthony
+  #   IdentityFile ~/.ssh/keys/amazon_rsa
+  #   IdentitiesOnly true
+  #   RemoteCommand sudo su - ubuntu
+  #   RequestTTY yes
+
+  # ssh config sample: custom hostname
+  # Host *.hubble.sg
+  #   User anthony
+  #   IdentityFile ~/.ssh/keys/amazon_rsa
+  #   IdentitiesOnly yes
+  #   RemoteCommand sudo su - ubuntu
+  #   RequestTTY yes
+  #   StrictHostKeyChecking no
+  #   UserKnownHostsFile /dev/null

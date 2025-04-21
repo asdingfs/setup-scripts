@@ -161,15 +161,6 @@ alias gpo="git push origin"
 alias gdc="git diff --cached"
 alias gdd="git diff"
 
-# hubble main folders
-alias hbemapi="cd /Users/asdingfs/Adventures/hubble/hubble_api_master"
-alias hbedapi="cd /Users/asdingfs/Adventures/hubble/hubble_api_develop"
-alias hbemv3api="cd /Users/asdingfs/Adventures/hubble/hubble_api_master_v3/"
-alias hbedv3api="cd /Users/asdingfs/Adventures/hubble/hubble_api_develop_v3/"
-alias hfemweb="cd /Users/asdingfs/Adventures/hubble/hubble_web_base"
-alias hbejqgem="cd /Users/asdingfs/Adventures/hubble/job_queue_container/gems/job_queue"
-alias hbejqapi="cd /Users/asdingfs/Adventures/hubble/job_queue_server/app"
-
 # copy aliases to emacs eshell alias
 if [[ -e $HOME/.emacs.d/eshell/alias ]]; then
    alias | sed -E "s/^alias ([^=]+)='(.*)'$/alias \1 \2 \$*/g; s/'\\\''/'/g;" > $HOME/.emacs.d/eshell/alias
@@ -185,3 +176,16 @@ fi
 # NVM
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# JEnv: Java Version Manager
+# see: https://github.com/jenv/jenv for more info on how to add new java versions
+# new installations: run jenv add /Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home/
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 . $HOME/.zshenv # load the env variable
 
 # save buffers, restarts the server & all client frames associated with it
