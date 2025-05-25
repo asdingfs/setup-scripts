@@ -186,6 +186,17 @@ eval "$(jenv init -)"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# MacOSX seems to have added these paths from /etc/paths
+# monitoring if these are necessary
+# /usr/local/bin (already there)
+# /usr/bin (already here)
+# /bin (already there)
+# /System/Cryptexes/App/usr/bin
+# /usr/sbin
+# /sbin
+# there are three entries that's not yet there, will modify to put it at the end of path (least priority)
+export PATH="$PATH:/System/Cryptexes/App/usr/bin:/usr/sbin:/sbin"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
