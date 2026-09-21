@@ -36,11 +36,11 @@
 	<key>CFBundleIconName</key>
 	<string>ApplicationStub</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.automator.Emacs-Client</string>
+	<string>com.apple.automator.Emacs-Client---Old</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Emacs Client</string>
+	<string>Emacs Client - Old</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

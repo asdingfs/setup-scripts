@@ -40,7 +40,7 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras git-flow z zsh-completions zsh-syntax-highlighting, poetry)
+plugins=(git git-extras git-flow z zsh-completions zsh-syntax-highlighting poetry)
 autoload -U compinit && compinit
 
 # Path to your oh-my-zsh installation
@@ -98,58 +98,6 @@ alias t='open -a /Applications/iTerm.app/Contents/MacOS/iTerm2 "$@"'
 alias e='open $emacs $1'
 alias et='emacsclient -nw'
 
-# kubernetes shortcut
-alias k8=kubectl
-alias kns=kubens
-# quick access to terminal
-function k8t() {
-    kubectl exec -it $1 -- bash
-}
-
-function k8p() {
-    while getopts ":n" option; do
-        case $option in
-            n)
-                TEMPLATE_STR="{{range .items}}{{.metadata.name}}{{"'"\n"'"}}{{end}}"
-                TEMPLATE_ARGS=(--template ${TEMPLATE_STR})
-                shift
-                ;;
-            *)
-                break
-                ;;
-        esac
-    done
-    if [[ $# -eq 0 ]]; then
-        kubectl get pods
-    elif [[ $# -gt 2 ]]; then
-        echo "invalid argument length" 1>&2
-    elif [[ -n "$2" ]]; then
-        kubectl get pods -l instance=$1,component=$2 ${TEMPLATE_ARGS[@]}
-    elif [[ -n "$1" ]]; then
-        kubectl get pods -l instance=$1 ${TEMPLATE_ARGS[@]}
-    fi
-}
-
-function k8pc() {
-    target=$(k8p -n $@ | head -1)
-    if [[ -z "$target" ]]; then
-        echo "No target was found!"
-    else
-        echo $target | pbcopy
-        echo "Copied '$target' k8 pod name to clipboard."
-    fi
-}
-
-function k8aplt() {
-    token=$(aws eks get-token --cluster-name=eks-prod-cluster | jq ".status.token" | tr -d '"')
-    if [[ -z "$token" ]]; then
-        echo "Token can't be generated!"
-    else
-        echo $token | pbcopy
-        echo "Copied '$token' to clipboard"
-    fi
-}
-
 # other aliases
 # alias pip=pip3
 export EDITOR="emacsclient"
@@ -180,23 +128,12 @@ fi
 # JEnv: Java Version Manager
 # see: https://github.com/jenv/jenv for more info on how to add new java versions
 # new installations: run jenv add /Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home/
-export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# MacOSX seems to have added these paths from /etc/paths
-# monitoring if these are necessary
-# /usr/local/bin (already there)
-# /usr/bin (already here)
-# /bin (already there)
-# /System/Cryptexes/App/usr/bin
-# /usr/sbin
-# /sbin
-# there are three entries that's not yet there, will modify to put it at the end of path (least priority)
-export PATH="$PATH:/System/Cryptexes/App/usr/bin:/usr/sbin:/sbin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# load BREW shellenv
+eval "$(/opt/homebrew/bin/brew shellenv)"
