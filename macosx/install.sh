@@ -33,18 +33,18 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # packages to install in this script
 
 #  python postgres redis yt-dlp awscli
-BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git python uv jenv rvm nvm redis yt-dlp awscli)
+BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git gh python uv jenv rvm nvm redis yt-dlp awscli)
 # TODO: additional brew packages: texinfo
 
 # UNINSTALL: google-chrome musescore
-BRAIN_CASK_PACKAGES=(1password emacs supernotes dropbox anki ogdesign-eagle mylio) # not cask: drafts
+BRAIN_CASK_PACKAGES=(1password emacs supernotes dropbox anki ogdesign-eagle mylio surfshark blip) # not cask: drafts
 CORE_CASK_PACKAGES=(iterm2 firefox arc karabiner-elements font-inconsolata font-latin-modern-math alfred keka)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(telegram whatsapp discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission rectangle-pro clocker)
+APPS_CASK_PACKAGES=(telegram whatsapp discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission rectangle-pro hiddenbar clocker)
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma gimp inkscape handbrake musicbrainz-picard musescore calibre vlc)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
-WORK_CASK_PACKAGES=(visual-studio-code pycharm)
+WORK_CASK_PACKAGES=(visual-studio-code pycharm chatgpt)
 # TODO: additional cask packages: mactex
 
 # apps to install manually:
