@@ -1,5 +1,5 @@
 {
-    "global": { "show_additional_menu_items": true },
+    "global": { "ask_for_confirmation_before_quitting": false },
     "profiles": [
         {
             "complex_modifications": {

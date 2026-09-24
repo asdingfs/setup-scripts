@@ -221,6 +221,10 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>NeverWarnAboutShortLivedSessions_B29FE7CA-8E0E-4979-9641-AA562A004386</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_B29FE7CA-8E0E-4979-9641-AA562A004386_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -412,6 +416,8 @@
 				<key>Red Component</key>
 				<integer>1</integer>
 			</dict>
+			<key>Blink Allowed</key>
+			<false/>
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
@@ -455,6 +461,8 @@
 				<key>Red Component</key>
 				<real>0.70213186740875244</real>
 			</dict>
+			<key>Cursor Hidden When Unfocused</key>
+			<false/>
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -473,6 +481,8 @@
 			<key>Description</key>
 			<string>Default</string>
 			<key>Disable Window Resizing</key>
+			<true/>
+			<key>Draw Powerline Glyphs</key>
 			<true/>
 			<key>Flashing Bell</key>
 			<false/>
@@ -831,11 +841,13 @@
 			<key>Name</key>
 			<string>Wolfole</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>Symbola 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
+			<key>Non-ASCII Ligatures</key>
+			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>Iosevka-Term 14</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1033,7 +1045,7 @@
 			<key>Use Non-ASCII Font</key>
 			<true/>
 			<key>Vertical Spacing</key>
-			<real>1.0800000000000001</real>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
