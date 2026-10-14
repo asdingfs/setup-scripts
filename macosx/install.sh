@@ -44,7 +44,7 @@ APPS_CASK_PACKAGES=(telegram whatsapp discord zoom spotify google-chrome pdf-exp
 DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma gimp inkscape handbrake musicbrainz-picard musescore calibre vlc)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
-WORK_CASK_PACKAGES=(visual-studio-code pycharm chatgpt)
+WORK_CASK_PACKAGES=(visual-studio-code pycharm chatgpt linear)
 # TODO: additional cask packages: mactex
 
 # apps to install manually:
