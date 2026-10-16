@@ -41,8 +41,8 @@ BRAIN_CASK_PACKAGES=(1password emacs supernotes dropbox anki ogdesign-eagle myli
 CORE_CASK_PACKAGES=(iterm2 firefox arc karabiner-elements font-inconsolata font-latin-modern-math alfred keka)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs onyx appcleaner tunnelblick)
 APPS_CASK_PACKAGES=(telegram whatsapp discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission rectangle-pro hiddenbar clocker)
-DEV_APPS_CASK_PACKAGES=(postman docker android-file-transfer android-studio vysor)
-MEDIA_CASK_PACKAGES=(blender figma gimp inkscape handbrake musicbrainz-picard musescore calibre vlc)
+DEV_APPS_CASK_PACKAGES=(postman docker docker-compose android-file-transfer android-studio vysor)
+MEDIA_CASK_PACKAGES=(blender figma gimp inkscape handbrake affinity musicbrainz-picard musescore calibre vlc)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
 WORK_CASK_PACKAGES=(visual-studio-code pycharm chatgpt linear)
 # TODO: additional cask packages: mactex
@@ -59,8 +59,6 @@ WORK_CASK_PACKAGES=(visual-studio-code pycharm chatgpt linear)
 #     - Relax Melodies Premium
 #     - Typesy/Typist (when needed)
 # 3. Manually download & install from websites:
-#     - Affinity Photo (cask is deprecated)
-#     - Affinity Designer (cask is deprecated)
 #     - Capture One (because I only own lifetime version of an older version
 #     - Google Drive (when needed)
 #     - Palette Master Element (when needed) (BENQ Monitor hardware calibration) 
