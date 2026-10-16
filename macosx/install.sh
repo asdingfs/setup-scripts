@@ -40,7 +40,7 @@ BREW_PACKAGES=(wget curl gpg z ripgrep ag w3m pandoc git gh python uv jenv rvm n
 BRAIN_CASK_PACKAGES=(1password emacs supernotes dropbox anki ogdesign-eagle mylio surfshark blip) # not cask: drafts
 CORE_CASK_PACKAGES=(iterm2 firefox arc karabiner-elements font-inconsolata font-latin-modern-math alfred keka)
 SYSTEM_CASK_PACKAGES=(paragon-ntfs onyx appcleaner tunnelblick)
-APPS_CASK_PACKAGES=(telegram whatsapp discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission rectangle-pro hiddenbar clocker)
+APPS_CASK_PACKAGES=(miro telegram whatsapp discord zoom spotify google-chrome pdf-expert reflector duet parsec jump-desktop-connect steam openemu transmission rectangle-pro hiddenbar clocker)
 DEV_APPS_CASK_PACKAGES=(postman docker docker-compose android-file-transfer android-studio vysor)
 MEDIA_CASK_PACKAGES=(blender figma gimp inkscape handbrake affinity musicbrainz-picard musescore calibre vlc)
 # TODO: additional cask packages SSL error: mediahuman-audio-converter mediahuman-youtube-downloader
@@ -135,6 +135,7 @@ ln -s $HOME/.config/personal/macosx/emacs/gnu.emacs.daemon.LaunchAtLogin.agent.p
 launchctl load -w $HOME/Library/LaunchAgents/gnu.emacs.daemon.LaunchAtLogin.agent.plist
 
 # setup karabiner & ssh config
+ln -s $HOME/.config/personal/macosx/docker_config.json $HOME/.docker/config.json
 ln -s $HOME/.config/personal/macosx/ssh_config $HOME/.ssh/config
 ln -s $HOME/.config/personal/macosx/karabiner_config $HOME/.config/karabiner
 
